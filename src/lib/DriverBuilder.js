@@ -4,10 +4,10 @@ import webdriver from 'selenium-webdriver';
 
 export default class DriverBuilder {
   constructor() {
-    const builder = new webdriver.Builder().usingServer('http://localhost:4444/wd/hub');
-    const capabilities = webdriver.Capabilities['chrome']();
-    builder.withCapabilities(capabilities);
-    this._driver = builder.build();
+    this._driver = new webdriver.Builder()
+      .usingServer('http://localhost:4444/wd/hub')
+      .forBrowser('chrome')
+      .build();
   }
 
   get driver() {
